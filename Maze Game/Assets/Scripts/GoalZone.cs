@@ -6,17 +6,20 @@ using UnityEngine;
 public class GoalZone : MonoBehaviour
 {
     private RotationalMovement maze;
+    private GameManager manager;
     private void Awake()
     {
         maze = FindObjectOfType<RotationalMovement>();
+        manager = FindObjectOfType<GameManager>();
     }
     private void OnTriggerEnter(Collider other)
     {
         maze.enabled = false;
-        FindObjectOfType<GameManager>().tim.Pause();
-        Invoke(nameof(Win), 1.5f);
+        manager.tim.Pause();
+        manager.pausable = false;
+        Invoke(nameof(Win), 0.8f);
     }
     private void Win() {
-        FindObjectOfType<GameManager>().Win();
+        manager.Win();
     }
 }

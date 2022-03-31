@@ -10,14 +10,15 @@ public class MenuManager : MonoBehaviour
     public Canvas pauseScreen;
     public bool isPaused { get; private set; }
     public bool hasMusic;
-    public string sceneTheme = "";
+    public LoopingMusic music;
     private AudioManager audioManager;
     private void Awake()
     {
         audioManager = FindObjectOfType<AudioManager>();
-        if (hasMusic) {         
-            audioManager.Play(sceneTheme);
-        }
+    }
+    private void Start()
+    {
+        Reset();
     }
     public void Click() {
         audioManager.Play("Click");
@@ -70,6 +71,10 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         if (pausable) { 
             pauseScreen.gameObject.SetActive(false);
+        }
+        if (hasMusic)
+        {
+            music.Reset();
         }
     }
 }

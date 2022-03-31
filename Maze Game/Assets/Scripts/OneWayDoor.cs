@@ -15,6 +15,9 @@ public class OneWayDoor : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        Invoke(nameof(Activate), 0.1f);
+    }
+    private void Activate() {
         door.SetActive(true);
     }
 }
