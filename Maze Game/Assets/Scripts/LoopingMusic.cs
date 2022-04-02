@@ -6,42 +6,46 @@ public class LoopingMusic : MonoBehaviour
 {
     public Sound introTrack;
     public Sound loopingAudio;
-    private Sound current;
+    private AudioSource current;
     private bool paused;
     private void Awake()
     {
         introTrack.source = gameObject.AddComponent<AudioSource>();
         introTrack.source.playOnAwake = true;
         introTrack.source.clip = introTrack.clip;
-        introTrack.source.loop = introTrack.loop;
+        introTrack.source.loop = false;
+        introTrack.source.volume = introTrack.volume;
+        introTrack.source.pitch = introTrack.pitch;
 
         loopingAudio.source = gameObject.AddComponent<AudioSource>();
         loopingAudio.source.playOnAwake = false;
         loopingAudio.source.clip = loopingAudio.clip;
-        loopingAudio.source.loop = loopingAudio.loop;
+        loopingAudio.source.loop = true;
+        loopingAudio.source.volume = loopingAudio.volume;
+        loopingAudio.source.pitch = loopingAudio.pitch;
 
         Reset();
     }
     private void Update()
     {
-        if (!(current.source.isPlaying || paused)) {
-            current = loopingAudio;
-            current.source.Play();
+        if (!(current.isPlaying || paused)) {
+            loopingAudio.source.Play();
+            current = loopingAudio.source;          
         }
     }
     public void Reset()
     {
         paused = false;
-        current = introTrack;
-        current.source.Play();
+        current = introTrack.source;
+        current.Play();
     }
     public void Pause()
     {
         paused = true;
-        current.source.Pause();
+        current.Pause();
     }
     public void UnPause() {
         paused = false;
-        current.source.UnPause();
+        current.UnPause();
     } 
 }
