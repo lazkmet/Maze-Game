@@ -35,6 +35,7 @@ public class LoopingMusic : MonoBehaviour
     }
     public void Reset()
     {
+        if (current != null) { current.Stop(); }
         paused = false;
         current = introTrack.source;
         current.Play();

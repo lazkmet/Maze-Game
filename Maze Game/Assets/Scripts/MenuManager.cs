@@ -47,12 +47,20 @@ public class MenuManager : MonoBehaviour
                 if (pauseScreen != null) {
                     pauseScreen.gameObject.SetActive(true);
                 }
+                if (hasMusic)
+                {
+                    music.Pause();
+                }
             }
             else {
                 Time.timeScale = 1;
                 if (pauseScreen != null)
                 {
                     pauseScreen.gameObject.SetActive(false);
+                }
+                if (hasMusic)
+                {
+                    music.UnPause();
                 }
             }
         }

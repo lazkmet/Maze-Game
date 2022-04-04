@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviour
     public void Reset()
     {
         pausable = true;
-        ball.transform.position = ballPos;        
+        ball.transform.position = ballPos;
+        ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         maze.Reset();
         tim.Reset();
         menus.Reset();
