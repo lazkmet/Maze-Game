@@ -316,6 +316,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -1105,5 +1107,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level4.unity
   - Assets/Scenes/Level5.unity
   - Assets/Scenes/Level6.unity
-  playerPath: C:/Users/lkmet/Documents/GitHub/Maze-Game/Maze Game/Builds/1.0/Maze
+  playerPath: C:/Users/lkmet/Documents/GitHub/Maze-Game/Maze Game/Builds/1.1/Maze
     Game.exe
